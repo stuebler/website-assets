@@ -1,140 +1,278 @@
+/* ========================================
+   Allgemeine Einstellungen
+   ======================================== */
+
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
+
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f8;
     color: #222;
+
+    background-color: #dfe5e2;
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
 }
 
+
+/* ========================================
+   Seiten-Hintergründe
+   ======================================== */
+
+body.page-home {
+    background-image: url("backgrounds/home.jpg");
+}
+
+body.page-openwebrx {
+    background-image: url("backgrounds/openwebrx.jpg");
+}
+
+body.page-docker {
+    background-image: url("backgrounds/docker.jpg");
+}
+
+body.page-moritz {
+    background-image: url("backgrounds/moritz.jpg");
+}
+
+
+/* ========================================
+   Hintergrund-Abdunklung
+   ======================================== */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    z-index: -1;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   Header – Liquid Glass
+   ======================================== */
 
 header {
-    text-align: center;
-    padding: 50px 20px;
-    background: #2d6a4f;
-    color: white;
-}
+    position: relative;
 
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: white;
+
+    background: rgba(45, 106, 79, 0.62);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
 
 header h1 {
     font-size: 42px;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
 }
-
 
 header p {
     font-size: 22px;
     margin: 0;
 }
 
+header a {
+    color: #fff3b0;
+
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: opacity 0.2s;
+}
+
+header a:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+
+
+/* ========================================
+   Startseite – Grid
+   ======================================== */
 
 .grid {
     max-width: 1200px;
+
     margin: 40px auto;
     padding: 20px;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
     gap: 25px;
 }
 
 
+/* ========================================
+   Startseite – Liquid Glass Karten
+   ======================================== */
+
 .card {
-    background: white;
-    border-radius: 18px;
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 22px;
+
     padding: 25px;
+
     text-decoration: none;
     color: inherit;
 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
 
-    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* Lichtkante */
+
+.card::before,
+.big-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    opacity: 0.8;
 }
 
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
+    transform: translateY(-6px);
 
+    background: rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
 
 .icon {
     font-size: 45px;
 }
 
-
 .card h2 {
     margin: 15px 0 10px;
 }
-
 
 .card p {
     line-height: 1.5;
 }
 
 
+/* ========================================
+   Privater Bereich
+   ======================================== */
+
 .private {
-    border: 3px solid #d4a017;
+    border: 2px solid rgba(212, 160, 23, 0.75);
+
+    background: rgba(255, 248, 220, 0.55);
 }
 
+
+/* ========================================
+   Footer
+   ======================================== */
 
 footer {
     text-align: center;
+
     padding: 30px;
-    color: #666;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    text-shadow:
+        0 1px 5px rgba(0, 0, 0, 0.35);
 }
 
 
-
-/* Handy-Optimierung */
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 35px 15px;
-    }
-
-    header h1 {
-        font-size: 32px;
-    }
-
-    header p {
-        font-size: 18px;
-    }
-
-
-    .grid {
-        margin: 15px auto;
-        padding: 15px;
-        gap: 15px;
-    }
-
-
-    .card {
-        padding: 20px;
-    }
-
-}
-
-/* Große Inhaltskarten für Projekt-, Über-mich- und Infoseiten */
+/* ========================================
+   Große Inhaltskarten
+   ======================================== */
 
 .big-content {
     max-width: 900px;
+
     margin: 40px auto;
     padding: 20px;
 
     display: grid;
+
     gap: 25px;
 }
 
 .big-card {
-    background: white;
-    border-radius: 18px;
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 22px;
+
     padding: 30px;
 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
+
+    overflow: hidden;
 }
 
 .big-icon {
@@ -155,84 +293,410 @@ footer {
     line-height: 1.8;
 }
 
+
+/* ========================================
+   Links in Inhaltskarten
+   ======================================== */
+
+.big-card p a {
+    color: #17633f;
+
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: opacity 0.2s;
+}
+
+.big-card p a:hover {
+    text-decoration: underline;
+    opacity: 0.75;
+}
+
+
+/* ========================================
+   Buttons – Liquid Glass
+   ======================================== */
+
+.big-card .button,
+.connection-controls button,
+.copy-button {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    background: rgba(45, 106, 79, 0.72);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    color: white;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.big-card .button:hover,
+.connection-controls button:hover,
+.copy-button:hover {
+    background: rgba(45, 106, 79, 0.88);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+
+/* ========================================
+   YAML-Code
+   ======================================== */
+
+.code-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+    padding: 10px 15px;
+
+    background: rgba(45, 106, 79, 0.78);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 14px 14px 0 0;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.code-header span {
+    font-weight: bold;
+}
+
+.copy-button {
+    padding: 8px 14px;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    color: #2d6a4f;
+}
+
+.copy-button:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.big-card pre {
+    margin: 0;
+
+    padding: 20px;
+
+    background: rgba(240, 244, 242, 0.75);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    border-top: none;
+
+    border-radius: 0 0 14px 14px;
+
+    overflow-x: auto;
+
+    line-height: 1.5;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   Interessen
+   ======================================== */
+
 .interests {
     list-style: none;
+
     padding-left: 0 !important;
 }
 
 .interests li {
-    background: #f4f6f8;
+    background: rgba(244, 246, 248, 0.55);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     padding: 10px 14px;
+
     margin-bottom: 8px;
-    border-radius: 10px;
-}
 
-/* Button */
+    border-radius: 12px;
 
-.big-card .button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 12px 20px;
-    border-radius: 20px;
-    background: #2d6a4f;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.big-card .button:hover {
-    opacity: 0.85;
+    border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 
-/* Handy-Optimierung */
-
-@media (max-width: 600px) {
-
-    .big-content {
-        margin: 15px auto;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    .big-card {
-        padding: 22px;
-    }
-
-    .big-icon {
-        font-size: 42px;
-    }
-}
-/* Fotogalerie innerhalb einer big-card */
+/* ========================================
+   Fotogalerie
+   ======================================== */
 
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
     gap: 15px;
+
     margin-top: 20px;
 }
 
 .photo-grid img {
     width: 100%;
     height: 220px;
+
     object-fit: cover;
-    border-radius: 12px;
+
+    border-radius: 14px;
+
     display: block;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.photo-grid figure {
+    margin: 0;
+}
+
+.photo-grid figcaption {
+    margin-top: 8px;
+
+    padding: 0 4px;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    color: #444;
 }
 
 
-/* Handy */
+/* ========================================
+   Iframe
+   ======================================== */
+
+.connection-player {
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.connection-player iframe {
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* ========================================
+   Iframe-Steuerung
+   ======================================== */
+
+.connection-controls {
+    margin-top: 15px;
+}
+
+.connection-controls button {
+    padding: 12px 20px;
+}
+
+
+/* ========================================
+   Kino-Modus
+   ======================================== */
+
+.connection-card.theater-mode {
+    position: fixed;
+
+    z-index: 9999;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    max-width: none;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: 0;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+.connection-card.theater-mode .big-icon,
+.connection-card.theater-mode h2 {
+    display: none;
+}
+
+.connection-card.theater-mode .connection-player {
+    width: 100%;
+    height: 100vh;
+
+    margin: 0;
+
+    aspect-ratio: auto;
+
+    border-radius: 0;
+
+    border: none;
+}
+
+.connection-card.theater-mode .connection-controls {
+    position: fixed;
+
+    z-index: 10000;
+
+    right: 20px;
+    bottom: 20px;
+
+    margin: 0;
+}
+
+.connection-card.theater-mode .connection-controls button {
+    opacity: 0.85;
+}
+
+.connection-card.theater-mode .connection-controls button:hover {
+    opacity: 1;
+}
+
+
+/* ========================================
+   Handy-Optimierung
+   ======================================== */
 
 @media (max-width: 600px) {
 
+    /* Header */
+
+    header {
+        padding: 35px 15px;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    header p {
+        font-size: 18px;
+    }
+
+
+    /* Startseite */
+
+    .grid {
+        margin: 15px auto;
+
+        padding: 15px;
+
+        gap: 15px;
+    }
+
+    .card {
+        padding: 20px;
+
+        border-radius: 20px;
+    }
+
+
+    /* Große Inhaltskarten */
+
+    .big-content {
+        margin: 15px auto;
+
+        padding: 15px;
+
+        gap: 15px;
+    }
+
+    .big-card {
+        padding: 22px;
+
+        border-radius: 20px;
+    }
+
+    .big-icon {
+        font-size: 42px;
+    }
+
+
+    /* Fotogalerie */
+
     .photo-grid {
         grid-template-columns: 1fr;
+
         gap: 12px;
     }
 
     .photo-grid img {
         height: auto;
+
         max-height: 400px;
     }
 
+
+    /* Code */
+
+    .big-card pre {
+        font-size: 13px;
+
+        padding: 15px;
+    }
 }
