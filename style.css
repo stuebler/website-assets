@@ -48,6 +48,11 @@ body.page-moritz {
     background-image: url("https://stuebler.org/background.jpg");
 }
 
+body.page-city {
+    background-image: url("https://city.stuebler.org/background.png");
+}
+
+
 body.page-urlaub-neusiedler-see {
     background-image: url("https://moritz.stuebler.org/sport/urlaub-neusiedler-see/background.jpg");
 }
