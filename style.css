@@ -32,11 +32,11 @@ body {
    ======================================== */
 
 body.page-root {
-    background-image: url("https://stuebler.org/background.jpg");
+    background-image: url("https://assets.stuebler.org/background.jpg");
 }
 
 body.page-georg {
-    background-image: url("https://stuebler.org/background.jpg");
+    background-image: url("https://assets.stuebler.org/background.jpg");
 }
 
 body.page-sabine {
@@ -44,7 +44,7 @@ body.page-sabine {
 }
 
 body.page-moritz {
-    background-image: url("https://stuebler.org/background.jpg");
+    background-image: url("https://assets.stuebler.org/background.jpg");
 }
 
 body.page-city {
