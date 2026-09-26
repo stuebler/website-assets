@@ -33,19 +33,19 @@ body {
    ======================================== */
 
 body.page-root {
-    background-image: url("https://moritz.stuebler.org/sport/urlaub-neusiedler-see/background.jpg");
+    background-image: url("https://stuebler.org/background.jpg");
 }
 
 body.page-georg {
-    background-image: url("https://moritz.stuebler.org/sport/urlaub-neusiedler-see/background.jpg");
+    background-image: url("https://stuebler.org/background.jpg");
 }
 
 body.page-sabine {
-    background-image: url("https://moritz.stuebler.org/sport/urlaub-neusiedler-see/background.jpg");
+    background-image: url("https://sabine.stuebler.org/loetkurs/picture.jpg");
 }
 
 body.page-moritz {
-    background-image: url("https://moritz.stuebler.org/sport/urlaub-neusiedler-see/background.jpg");
+    background-image: url("https://stuebler.org/background.jpg");
 }
 
 body.page-urlaub-neusiedler-see {
@@ -72,18 +72,18 @@ body::before {
 
 
 /* ========================================
-   Header
+   Page Header
    ======================================== */
 
-header {
+.page-header {
     text-align: center;
 
-    padding: 50px 20px;
+    padding: 100px 20px 10px;
 
     color: white;
 }
 
-header h1 {
+.page-header h1 {
     font-size: 42px;
 
     margin: 0 0 10px;
@@ -94,7 +94,7 @@ header h1 {
         0 2px 7px rgba(0, 0, 0, 0.8);
 }
 
-header p {
+.page-header p {
     font-size: 22px;
 
     margin: 0;
@@ -105,7 +105,7 @@ header p {
         0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-header a {
+.page-header a {
     color: white;
 
     font-weight: bold;
@@ -114,38 +114,76 @@ header a {
 
 
 /* ========================================
-   Startseite – Grid
+   Navigationsleiste – Layout
    ======================================== */
 
-.grid {
-    max-width: 1200px;
+.navbar { 
+    position: fixed; 
+ 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+ 
+    width: auto; 
+    height: 64px; 
+    display: flex;
 
-    margin: 40px auto;
+    justify-content: space-between;
+    align-items: center;
 
-    padding: 20px;
+    padding: 0 24px;
 
-    display: grid;
+    border-radius: 0 0 22px 22px;
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(260px, 1fr));
+    overflow: hidden;
 
-    gap: 25px;
+    z-index: 10;
+}
+.nav-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
 }
 
+.logo img {
+    height: 36px;
+}
 
-/* ========================================
-   Liquid Glass Karten
-   ======================================== */
+.nav-item {
+    display: flex;
 
-.card {
-    position: relative;
+    align-items: center;
 
-    display: block;
-
-    padding: 25px;
+    gap: 6px;
 
     color: white;
+
     text-decoration: none;
+
+    opacity: 0.85;
+
+    transition:
+        opacity 0.2s ease,
+        text-shadow 0.2s ease;
+}
+
+.nav-item:hover {
+    opacity: 1;
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   Liquid Glass – Gemeinsame Basis
+   ======================================== */
+
+.navbar,
+.card,
+.big-card {
+    color: white;
 
     background:
         linear-gradient(
@@ -164,26 +202,18 @@ header a {
 
     border: 1px solid rgba(255, 255, 255, 0.32);
 
-    border-radius: 22px;
-
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.22),
         inset 0 1px 0 rgba(255, 255, 255, 0.38),
         inset 0 -1px 0 rgba(255, 255, 255, 0.08);
-
-    overflow: hidden;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
 }
 
 
 /* ========================================
-   Glas-Lichtkante
+   Liquid Glass – Lichtkante
    ======================================== */
 
+.navbar::before,
 .card::before,
 .big-card::before {
     content: "";
@@ -211,9 +241,10 @@ header a {
 
 
 /* ========================================
-   Glasreflexion
+   Liquid Glass – Reflexion
    ======================================== */
 
+.navbar::after,
 .card::after,
 .big-card::after {
     content: "";
@@ -236,6 +267,63 @@ header a {
     transform: rotate(-2deg);
 
     pointer-events: none;
+}
+
+
+/* ========================================
+   Navigationsleiste – Liquid Glass
+   ======================================== */
+
+.navbar {
+    position: fixed;
+
+    overflow: hidden;
+
+    border-radius: 0 0 18px 18px;
+}
+
+
+/* ========================================
+   Startseite – Grid
+   ======================================== */
+
+.grid {
+    max-width: 1200px;
+
+    margin: 0 auto 40px;
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 25px;
+}
+
+
+/* ========================================
+   Liquid Glass Karten
+   ======================================== */
+
+.card {
+    position: relative;
+
+    display: block;
+
+    padding: 25px;
+
+    text-decoration: none;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
 
@@ -290,6 +378,24 @@ header a {
         0 1px 4px rgba(0, 0, 0, 0.85);
 }
 
+.card img {
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
+
+    margin-top: 18px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.25);
+
+    display: block;
+}
+
 
 /* ========================================
    Privater Bereich
@@ -311,6 +417,7 @@ header a {
         inset 0 1px 0 rgba(255, 225, 120, 0.65),
         inset 0 -1px 0 rgba(255, 190, 30, 0.15);
 }
+
 .private:hover {
     background:
         linear-gradient(
@@ -327,6 +434,8 @@ header a {
         inset 0 1px 0 rgba(255, 235, 150, 0.80),
         inset 0 -1px 0 rgba(255, 190, 30, 0.20);
 }
+
+
 /* ========================================
    Footer
    ======================================== */
@@ -350,7 +459,7 @@ footer {
 .big-content {
     max-width: 900px;
 
-    margin: 40px auto;
+    margin: 0 auto 15px;
 
     padding: 20px;
 
@@ -359,37 +468,12 @@ footer {
     gap: 25px;
 }
 
-
 .big-card {
     position: relative;
 
     padding: 30px;
 
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(20, 20, 20, 0.38),
-            rgba(20, 20, 20, 0.20)
-        );
-
-    backdrop-filter:
-        blur(14px)
-        saturate(160%);
-
-    -webkit-backdrop-filter:
-        blur(14px)
-        saturate(160%);
-
-    border: 1px solid rgba(255, 255, 255, 0.32);
-
     border-radius: 22px;
-
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.38),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.08);
 
     overflow: hidden;
 }
@@ -470,7 +554,8 @@ footer {
 
 .big-card .button,
 .connection-controls button,
-.copy-button {
+.copy-button,
+.navbar .button {
     display: inline-block;
 
     padding: 12px 20px;
@@ -512,10 +597,10 @@ footer {
         box-shadow 0.2s ease;
 }
 
-
 .big-card .button:hover,
 .connection-controls button:hover,
-.copy-button:hover {
+.copy-button:hover,
+.members-btn:hover {
     background:
         linear-gradient(
             135deg,
@@ -832,7 +917,8 @@ footer {
 .card:focus-visible,
 .big-card .button:focus-visible,
 .connection-controls button:focus-visible,
-.copy-button:focus-visible {
+.copy-button:focus-visible,
+.members-btn:focus-visible {
     outline: 2px solid white;
 
     outline-offset: 4px;
@@ -845,25 +931,50 @@ footer {
 
 @media (max-width: 600px) {
 
-    /* Header */
+    /* Page Header */
 
-    header {
-        padding: 35px 15px;
+    .page-header {
+        padding: 100px 15px 10px;
     }
 
-    header h1 {
+    .page-header h1 {
         font-size: 32px;
     }
 
-    header p {
+    .page-header p {
         font-size: 18px;
+    }
+
+
+    /* Navigation */
+
+    .navbar {
+        height: 58px;
+
+        padding: 0 15px;
+    }
+
+    .nav-left {
+        gap: 12px;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    .logo img {
+        height: 32px;
+    }
+
+    .members-btn {
+        padding: 9px 15px;
     }
 
 
     /* Startseite */
 
     .grid {
-        margin: 15px auto;
+        margin: 0 auto 15px;
 
         padding: 15px;
 
@@ -880,7 +991,7 @@ footer {
     /* Große Inhaltskarten */
 
     .big-content {
-        margin: 15px auto;
+        margin: 0 auto 15px;
 
         padding: 15px;
 
@@ -933,7 +1044,8 @@ footer {
 
     .big-card .button,
     .connection-controls button,
-    .copy-button {
+    .copy-button,
+    .members-btn {
         padding: 11px 17px;
     }
 }
@@ -952,14 +1064,17 @@ footer {
     .card,
     .big-card .button,
     .connection-controls button,
-    .copy-button {
+    .copy-button,
+    .members-btn,
+    .nav-item {
         transition: none;
     }
 
     .card:hover,
     .big-card .button:hover,
     .connection-controls button:hover,
-    .copy-button:hover {
+    .copy-button:hover,
+    .members-btn:hover {
         transform: none;
     }
 }
